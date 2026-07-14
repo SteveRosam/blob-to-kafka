@@ -9,7 +9,7 @@ variables:
   - name: FILE_NAMES
     inputType: FreeText
     description: Comma-separated blob object keys to cycle through
-    defaultValue: samples/readings_1.csv,samples/readings_2.csv,samples/readings_3.csv
+    defaultValue: readings_1.csv,readings_2.csv,readings_3.csv
     required: false
   - name: PUBLISH_INTERVAL_SECONDS
     inputType: FreeText
