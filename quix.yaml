@@ -23,7 +23,7 @@ deployments:
       - name: FILE_NAMES
         inputType: FreeText
         description: Comma-separated blob object keys to cycle through
-        value: readings_1.csv,readings_2.csv,readings_3.csv
+        value: blobs-for-blob-yaml-thingie\readings_1.csv,readings_2.csv,readings_3.csv
       - name: PUBLISH_INTERVAL_SECONDS
         inputType: FreeText
         description: Seconds between published messages
