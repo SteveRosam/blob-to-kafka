@@ -1,0 +1,20 @@
+name: Generator
+language: docker
+variables:
+  - name: output
+    inputType: OutputTopic
+    description: Kafka topic to publish file-reference messages to (matches the processor's input)
+    defaultValue: blob-files
+    required: true
+  - name: FILE_NAMES
+    inputType: FreeText
+    description: Comma-separated blob object keys to cycle through
+    defaultValue: samples/readings_1.csv,samples/readings_2.csv,samples/readings_3.csv
+    required: false
+  - name: PUBLISH_INTERVAL_SECONDS
+    inputType: FreeText
+    description: Seconds between published messages
+    defaultValue: "10"
+    required: false
+dockerfile: dockerfile
+defaultFile: main.py

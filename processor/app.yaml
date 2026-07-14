@@ -1,0 +1,20 @@
+name: Blob Processor
+language: docker
+variables:
+  - name: input
+    inputType: InputTopic
+    description: Kafka topic to consume file-reference messages from
+    defaultValue: blob-files
+    required: true
+  - name: FILE_NAME_FIELD
+    inputType: FreeText
+    description: Field in each message holding the blob object key
+    defaultValue: file_name
+    required: false
+  - name: BLOB_BASE_PATH
+    inputType: FreeText
+    description: Root path in Quix blob storage (quixportal injects credentials automatically)
+    defaultValue: ''
+    required: false
+dockerfile: dockerfile
+defaultFile: main.py

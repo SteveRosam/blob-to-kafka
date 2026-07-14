@@ -1,0 +1,11 @@
+timestamp,sensor_id,temperature_c,humidity_pct,status
+2026-07-14T08:00:00Z,sensor-a,21.4,45.2,ok
+2026-07-14T08:05:00Z,sensor-a,21.6,45.0,ok
+2026-07-14T08:10:00Z,sensor-a,22.1,44.7,ok
+2026-07-14T08:15:00Z,sensor-a,22.8,44.1,ok
+2026-07-14T08:20:00Z,sensor-a,23.5,43.6,warn
+2026-07-14T08:25:00Z,sensor-a,24.0,43.0,warn
+2026-07-14T08:30:00Z,sensor-a,23.2,43.8,ok
+2026-07-14T08:35:00Z,sensor-a,22.7,44.4,ok
+2026-07-14T08:40:00Z,sensor-a,22.0,45.1,ok
+2026-07-14T08:45:00Z,sensor-a,21.5,45.5,ok
