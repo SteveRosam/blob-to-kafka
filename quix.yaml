@@ -86,7 +86,7 @@ deployments:
       - name: BLOB_BASE_PATH
         inputType: FreeText
         description: Root path in Quix blob storage (quixportal injects credentials automatically)
-        value: ''
+        value: blobs-for-blob-yaml-thingie
     blobStorage:
       bind: true
 
