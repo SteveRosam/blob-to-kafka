@@ -23,7 +23,7 @@ deployments:
       - name: FILE_NAMES
         inputType: FreeText
         description: Comma-separated blob object keys to cycle through
-        value: samples/readings_1.csv,samples/readings_2.csv,samples/readings_3.csv
+        value: readings_1.csv,readings_2.csv,readings_3.csv
       - name: PUBLISH_INTERVAL_SECONDS
         inputType: FreeText
         description: Seconds between published messages
@@ -42,6 +42,11 @@ deployments:
         description: Kafka topic to consume file-reference messages from
         required: true
         value: blob-files
+      - name: output
+        inputType: OutputTopic
+        description: Kafka topic to emit parsed row records to
+        required: true
+        value: processed-rows
       - name: FILE_NAME_FIELD
         inputType: FreeText
         description: Field in each message holding the blob object key
@@ -52,7 +57,40 @@ deployments:
         value: ''
     blobStorage:
       bind: true
+  - name: Blob Writer
+    application: writer
+    version: latest
+    deploymentType: Service
+    resources:
+      limits:
+        cpu: 200
+        memory: 500
+    variables:
+      - name: input
+        inputType: InputTopic
+        description: Kafka topic of row records to consume and write as CSV
+        required: true
+        value: processed-rows
+      - name: OUTPUT_PREFIX
+        inputType: FreeText
+        description: Blob prefix to write CSV chunks under
+        value: processed
+      - name: CHUNK_MAX_ROWS
+        inputType: FreeText
+        description: Maximum rows per CSV chunk before flushing
+        value: 1000
+      - name: CHUNK_INTERVAL_SECONDS
+        inputType: FreeText
+        description: Maximum seconds before a partial chunk is flushed
+        value: 30
+      - name: BLOB_BASE_PATH
+        inputType: FreeText
+        description: Root path in Quix blob storage (quixportal injects credentials automatically)
+        value: ''
+    blobStorage:
+      bind: true
 
 # This section describes the Topics of the data pipeline
 topics:
   - name: blob-files
+  - name: processed-rows

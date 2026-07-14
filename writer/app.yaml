@@ -1,0 +1,30 @@
+name: Blob Writer
+language: docker
+variables:
+  - name: input
+    inputType: InputTopic
+    description: Kafka topic of row records to consume and write as CSV
+    defaultValue: processed-rows
+    required: true
+  - name: OUTPUT_PREFIX
+    inputType: FreeText
+    description: Blob prefix to write CSV chunks under
+    defaultValue: processed
+    required: false
+  - name: CHUNK_MAX_ROWS
+    inputType: FreeText
+    description: Maximum rows per CSV chunk before flushing
+    defaultValue: "1000"
+    required: false
+  - name: CHUNK_INTERVAL_SECONDS
+    inputType: FreeText
+    description: Maximum seconds before a partial chunk is flushed
+    defaultValue: "30"
+    required: false
+  - name: BLOB_BASE_PATH
+    inputType: FreeText
+    description: Root path in Quix blob storage (quixportal injects credentials automatically)
+    defaultValue: ''
+    required: false
+dockerfile: dockerfile
+defaultFile: main.py

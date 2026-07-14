@@ -6,6 +6,11 @@ variables:
     description: Kafka topic to consume file-reference messages from
     defaultValue: blob-files
     required: true
+  - name: output
+    inputType: OutputTopic
+    description: Kafka topic to emit parsed row records to
+    defaultValue: processed-rows
+    required: true
   - name: FILE_NAME_FIELD
     inputType: FreeText
     description: Field in each message holding the blob object key
